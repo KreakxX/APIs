@@ -16,7 +16,6 @@ public class FoodController {
 
     private final FoodService service;
 
-
     @GetMapping("/food/by/name/{name}")
     public FoodObject getFoodByName(@PathVariable String name){
         return service.getFoodByName(name);
