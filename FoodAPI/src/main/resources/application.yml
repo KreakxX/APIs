@@ -15,3 +15,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+
+resilience4j.ratelimiter:
+  instances:
+    foodApiLimiter:
+      limitForPeriod: 2
+      limitRefreshPeriod: 10s
+      timeoutDuration: 0
