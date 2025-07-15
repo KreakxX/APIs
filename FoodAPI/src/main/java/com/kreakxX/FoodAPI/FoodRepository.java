@@ -8,4 +8,6 @@ public interface FoodRepository extends JpaRepository<FoodObject, String> {
 
     List<FoodObject> findBycategoryName(String categoryName);
 
+    FoodObject findByFoodName(String Name);
+
 }

@@ -13,7 +13,8 @@ public class FoodService {
     private final FoodRepository repository;
 
     public FoodObject getFoodByName(String name){
-        return repository.findById(name).orElseThrow();
+        return repository.findByFoodName(name);
+
     }
 
     public List<FoodObject> getFoodByCategories(String category){
@@ -21,9 +22,13 @@ public class FoodService {
     }
 
     public Object getFactByFood(String name, String method ) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        FoodObject object = repository.findById(name).orElseThrow();
+        FoodObject object = repository.findByFoodName(name);
         Method m = FoodObject.class.getMethod(method);
         return m.invoke(object);
+    }
+
+    public List<FoodObject> getAllFoodObjects(){
+        return repository.findAll();
     }
 
 }

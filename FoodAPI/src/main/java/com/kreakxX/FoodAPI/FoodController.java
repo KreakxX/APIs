@@ -16,18 +16,23 @@ public class FoodController {
 
     private final FoodService service;
 
-    @GetMapping("/food/by/name/{name}")
+    @GetMapping("/by/name/{name}")
     public FoodObject getFoodByName(@PathVariable String name){
         return service.getFoodByName(name);
     }
 
-    @GetMapping("/foods/by/category/{categories}")
-    public List<FoodObject> getFoodsByCategories(@PathVariable String category){
-        return service.getFoodByCategories(category);
+    @GetMapping("/by/category/{categories}")
+    public List<FoodObject> getFoodsByCategories(@PathVariable String categories){
+        return service.getFoodByCategories(categories);
     }
 
-    @GetMapping("/food/facts/by/name/{name}/method/{method}")
+    @GetMapping("/facts/by/name/{name}/method/{method}")
     public Object getFoodFacts(@PathVariable String name, @PathVariable String method) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         return service.getFactByFood(name,method);
+    }
+
+    @GetMapping("/getAll")
+    public List<FoodObject> getAllFoods(){
+        return service.getAllFoodObjects();
     }
 }
